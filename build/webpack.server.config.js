@@ -5,12 +5,19 @@ const base = require('./webpack.base.config')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const nodeExternals = require('webpack-node-externals')
 
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = merge(base, {
   target: 'node',
   entry: './src/server.entry.js',
   output: {
     filename: 'server.bundle.js',
     libraryTarget: 'commonjs2'
+  },
+  module: {
+    rules: utils.styleLoaders({
+      sourceMap: false, // isProd ? config.build.productionSourceMap : config.dev.cssSourceMap,
+      extract: isProd
+    })
   },
   externals: nodeExternals({
     // do not externalize CSS files in case we need to import it from a dep

@@ -5,7 +5,7 @@ const View = require('./View')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const useMicroCache = process.env.MICRO_CACHE !== 'false'
+const useMicroCache = false // process.env.MICRO_CACHE !== 'false'
 const cacheUrls = ['/', '/home', '/menu', '/button']
 
 const isCacheable = ctx => cacheUrls.indexOf(ctx.url) >= 0 && useMicroCache

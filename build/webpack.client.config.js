@@ -13,7 +13,7 @@ const isProd = process.env.NODE_ENV === 'production'
 const webpackClientConfig = merge(base, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: isProd ? config.build.productionSourceMap : config.dev.cssSourceMap,
+      sourceMap: false, // isProd ? config.build.productionSourceMap : config.dev.cssSourceMap, // 去除sourceMap，打包会报错
       extract: isProd
     })
   },

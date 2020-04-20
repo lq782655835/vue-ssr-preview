@@ -1,15 +1,46 @@
 <template>
   <div class="home-view">
-    <img src="../assets/img/logo.png">
-    <h1>Koa Vue SSR Template</h1>
-    <p>This template built with <a href="https://github.com/vuejs/vue">vue 2.x</a>, <a href="https://github.com/vuejs/vue-router">vue-router</a> & <a href="https://github.com/vuejs/vuex">vuex</a> with server-side rendering by <a href="https://github.com/koajs/koa">koa</a>.</p>
+    <component
+      v-for="oneComponent in components"
+      :key="oneComponent.id"
+      :is="oneComponent.name"
+      :data-component-id="oneComponent.id"
+      :data-component-name="oneComponent.name"
+      v-bind="oneComponent.data">
+    </component>
   </div>
 </template>
 
 <script>
+const list = Array(10).fill('').map(s => ({
+            author: '张三',
+            date: '15年8月11日 11:23',
+            content: '总裁审批：批准',
+            remark: '我觉得很好我觉得很好我觉得很好我觉得很好我觉得很好我觉得很好我觉得很好',
+          }))
+const mycomponents = [{
+  id: 1,
+  name: 'ks-operation-log',
+  data: {
+    list
+  }
+}, {
+  id: 2,
+  name: 'ks-clipboard',
+  data: {
+    content: 'hale'
+  }
+}]
 export default {
   title() {
     return 'Koa Vue SSR'
+  },
+  data() {
+    const components = (typeof window !== 'undefined') ?
+      window.INIT_DATA || mycomponents : mycomponents;
+    return {
+      components
+    };
   }
 }
 </script>
