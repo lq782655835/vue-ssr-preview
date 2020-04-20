@@ -1,9 +1,4 @@
-# Koa Vue SSR Template
-
->  This template built with Vue 2.x, vue-router & vuex  with server-side rendering by koa.
-
-## Screenshot
-![screenshot](./public/static/img/koa-vue-ssr-screenshot.png)
+# vue-ss-preview
 
 ## Build Setup
 Requires Node.js 7+
@@ -17,9 +12,11 @@ npm run dev
 
 # build for production
 npm run build
-
 # serve in production mode
 npm start
+
+# ssr render test
+node render.js
 ```
 
 ## License
